@@ -28,6 +28,18 @@ app.get("/", (req, res) => {
     res.sendFile(path.join(__dirname, '../public', 'index.html'));
 })
 
+app.post("/", (req, res) => {
+    console.log(req.body)
+    db.collection('users').insertOne(req.body)
+        .then(() => res.status(201).send("Usuário criado"))
+        .catch(() => res.status(422).send("Erro ao criar usuário"));
+})
+
+app.get("/tweets", (req, res) => {
+    res.status(200).send('tweets')
+})
+
+
 app.listen(PORT,() => {
     console.log(`Servidor rodando na porta ${PORT}`)
 })
