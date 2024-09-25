@@ -119,6 +119,9 @@ function loadUserTweets(username) {
 }
 
 function escapeHtml(unsafe) {
+  if(!unsafe){
+    return ''
+  }
   return unsafe
     .replace(/&/g, "&amp;")
     .replace(/</g, "&lt;")

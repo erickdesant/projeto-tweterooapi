@@ -13,7 +13,7 @@ let db
 
 mongoClient.connect()
     .then(() =>{
-        db = mongoClient.db
+        db = mongoClient.db()
         console.log("Mongo DB conectado")
     })
     .catch(err => console.log(err))
@@ -28,7 +28,7 @@ app.get("/", (req, res) => {
     res.sendFile(path.join(__dirname, '../public', 'index.html'));
 })
 
-app.post("/", (req, res) => {
+app.post("/sign-up", (req, res) => {
     console.log(req.body)
     db.collection('users').insertOne(req.body)
         .then(() => res.status(201).send("Usuário criado"))
