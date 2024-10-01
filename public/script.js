@@ -34,7 +34,7 @@ function loadTweets() {
   });
 }
 
-function Tweet({ _id, avatar, username, tweet }) {
+function Tweet({ id, avatar, username, tweet }) {
   return `
     <div class="tweet">
       <div class="avatar">
@@ -48,7 +48,7 @@ function Tweet({ _id, avatar, username, tweet }) {
           ${escapeHtml(tweet)}
         </div>
       </div>
-      ${insertButtonToEditOrDelete(_id, username)}
+      ${insertButtonToEditOrDelete(id, username)}
     </div>
   `
 }
@@ -58,7 +58,6 @@ function insertButtonToEditOrDelete(id, username) {
     <div class="delete" onclick="deleteThisTweet('${id}')">❌</div>
     <div class="edit" onclick="editThisTweet('${id}')">✏️</div>
   `;
-
   return "";
 }
 
